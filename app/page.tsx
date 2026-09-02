@@ -12,6 +12,7 @@ import {
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { PwaInstall } from '@/app/pwa-install';
 
 type Food = {
   name: string;
@@ -137,10 +138,13 @@ export default function Home() {
           <span>今日菜单</span>
           <strong>{new Intl.DateTimeFormat('zh-CN', { month: 'long', day: 'numeric', weekday: 'short' }).format(new Date())}</strong>
         </div>
-        <Button variant="outline" onClick={() => setShowPool((value) => !value)} className="menu-button">
-          菜单库 · {foods.length}
-          <ChevronDown className={showPool ? 'rotate-180' : ''} />
-        </Button>
+        <div className="top-actions">
+          <PwaInstall />
+          <Button variant="outline" onClick={() => setShowPool((value) => !value)} className="menu-button">
+            菜单库 · {foods.length}
+            <ChevronDown className={showPool ? 'rotate-180' : ''} />
+          </Button>
+        </div>
       </header>
 
       <section id="top" className="decision-stage" aria-labelledby="page-title">
