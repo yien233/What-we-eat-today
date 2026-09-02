@@ -1,6 +1,6 @@
 # 吃点啥：GitHub Pages 发布与安卓安装说明
 
-这个仓库已经准备好 GitHub Pages 自动发布配置。网页文件位于 `github-pages`，每次向 `main` 分支提交后，GitHub 会自动发布最新版本。
+这个仓库已经准备好 GitHub Pages 自动发布配置。用于发布的安卓 PWA 文件位于 `versions/android-pwa`，每次向 `main` 分支提交后，GitHub 会自动发布最新版本。
 
 ## 第一次发布
 
@@ -20,7 +20,7 @@
 
 ## 后续更新
 
-只需修改 `github-pages` 中的文件并提交到 `main` 分支，GitHub Actions 会自动重新发布。若手机暂时仍显示旧版本，关闭后重新打开一次即可完成缓存更新。
+只需修改 `versions/android-pwa` 中的文件并提交到 `main` 分支，GitHub Actions 会自动重新发布。若手机暂时仍显示旧版本，关闭后重新打开一次即可完成缓存更新。
 
 ## 隐私与数据
 
