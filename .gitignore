@@ -37,3 +37,14 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Android toolchains, build intermediates and private signing material
+/.android-tools/
+/.android-signing/
+**/local.properties
+**/.gradle/
+/versions/android-apk/app/build/
+/versions/android-apk/build/
+*.jks
+*.keystore
+*.apk.idsig

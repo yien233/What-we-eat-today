@@ -2,3 +2,6 @@
 *.bat text eol=crlf
 *.png binary
 *.zip binary
+*.apk binary
+*.jar binary
+**/gradlew text eol=lf

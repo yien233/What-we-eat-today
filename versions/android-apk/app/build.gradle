@@ -1,0 +1,47 @@
+plugins { id 'com.android.application' }
+
+def signingFile = rootProject.file('../../.android-signing/signing.properties')
+def signing = new Properties()
+if (signingFile.exists()) {
+    signingFile.withInputStream { signing.load(it) }
+}
+
+android {
+    namespace 'io.github.yien233.whatweeattoday'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'io.github.yien233.whatweeattoday'
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName '1.0.0'
+    }
+    signingConfigs {
+        if (signingFile.exists()) {
+            release {
+                storeFile rootProject.file(signing.getProperty('storeFile'))
+                storePassword signing.getProperty('storePassword')
+                keyAlias signing.getProperty('keyAlias')
+                keyPassword signing.getProperty('keyPassword')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (signingFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    lint { abortOnError true }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.16.0'
+}
