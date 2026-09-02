@@ -8,8 +8,10 @@
 2. 把本项目的全部文件上传到仓库，并确保默认分支名为 `main`。
 3. 打开仓库的 `Settings` → `Pages`。
 4. 在 `Build and deployment` 的 `Source` 中选择 `GitHub Actions`。
-5. 打开仓库的 `Actions` 页面，等待 `Deploy Android PWA to GitHub Pages` 运行完成。
-6. 发布地址通常是 `https://你的用户名.github.io/仓库名/`。GitHub Pages 设置页和工作流结果中也会显示准确地址。
+5. 打开仓库的 `Actions` 页面，选择 `Deploy Android PWA to GitHub Pages`，点击 `Run workflow`。
+6. 等待工作流运行完成。发布地址通常是 `https://你的用户名.github.io/仓库名/`，GitHub Pages 设置页和工作流结果中也会显示准确地址。
+
+首次启用 Pages 前，工作流会显示设置提示并跳过发布；这不影响源码和三个压缩包在 GitHub 上下载，也不表示网站已经上线。
 
 ## 安装到安卓手机
 

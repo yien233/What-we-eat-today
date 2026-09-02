@@ -16,8 +16,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  pages-ready:
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.pages.outputs.enabled }}
+    steps:
+      - name: Check whether GitHub Pages is enabled
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if response=$(gh api "repos/${GITHUB_REPOSITORY}/pages" 2>&1); then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$response" == *"HTTP 404"* ]]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Open Settings > Pages and choose GitHub Actions, then run this workflow again."
+            echo "Pages is not enabled yet. Choose GitHub Actions in Settings > Pages, then run this workflow again. No website was deployed in this run." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Could not read GitHub Pages settings."
+            exit 1
+          fi
+
   build:
     runs-on: ubuntu-latest
+    needs: pages-ready
+    if: needs.pages-ready.outputs.enabled == 'true'
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
