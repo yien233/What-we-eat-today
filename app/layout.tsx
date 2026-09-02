@@ -8,6 +8,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://chi-dian-sha.yien233.chatgpt.site'),
   title: '吃点啥｜今天吃什么随机抽取器',
   description: '80 种平价即食美味，按类别和预算随机抽取，轻松决定今天吃什么。',
   openGraph: {
